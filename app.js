@@ -48,7 +48,7 @@ passport.deserializeUser(User.deserializeUser());
 
 connectToDB = async (req, res, next) => {
     try {
-        const db_url = process.env.registerLogin_DB_URL;
+        const db_url = process.env.REGISTERLOGIN_DB_URL;
         await mongoose.connect(db_url);
         next();
     }
@@ -75,6 +75,8 @@ registerUser = async (req, res, next) => {
 }
 
 authenticateAndLogin = (req, res, next) => {
+    req.body.username = (req.body.username).toLowerCase();
+    
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             return next(new AppError(500, "Couldn't authenticate the user."));
