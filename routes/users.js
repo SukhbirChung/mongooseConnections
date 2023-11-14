@@ -5,15 +5,15 @@ const users = require('../controllers/users');
 const router = express.Router({ mergeParams: true });
 
 router.post('/', connectToDB, isAuthenticated, (req, res) => {
-    res.send(req.user);
+    res.send(req.user.username);
 });
 
 router.post('/signup', connectToDB, users.registerUser, users.authenticateAndLogin, (req, res) => {
-    res.send(req.user);
+    res.send("Account created successfully.");
 });
 
 router.post('/login', connectToDB, users.authenticateAndLogin, (req, res) => {
-    res.send(req.user);
+    res.send("welcome! Logged in successfully.");
 });
 
 router.post('/logout', (req, res, next) => {
@@ -21,7 +21,7 @@ router.post('/logout', (req, res, next) => {
         if (err) {
             return next(new AppError(500, "Couldn't log out."));
         }
-        res.send('Successfully logged out.');
+        res.send('Logged out successfully.');
     });
 })
 
