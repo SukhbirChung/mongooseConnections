@@ -35,3 +35,20 @@ module.exports.addToCollection = async (req, res, next) => {
         return next(err);
     }
 }
+
+module.exports.getUserCollection = async (req, res, next) => {
+    try {
+        const category = req.query.category;
+        const userCollection = await Collection.find({ user: req.user._id });
+
+        if (userCollection.length === 0) {
+            res.send([]);
+        }
+        else {
+            res.send(userCollection[0][category]);
+        }
+    }
+    catch (err) {
+        return next(err);
+    }
+}

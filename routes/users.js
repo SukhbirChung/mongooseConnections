@@ -13,7 +13,7 @@ router.post('/signup', connectToDB, users.registerUser, users.authenticateAndLog
 });
 
 router.post('/login', connectToDB, users.authenticateAndLogin, (req, res) => {
-    res.send("welcome! Logged in successfully.");
+    res.send("Welcome! Logged in successfully.");
 });
 
 router.post('/logout', (req, res, next) => {

@@ -6,4 +6,6 @@ const router = express.Router({ mergeParams: true });
 
 router.post('/addToCollection', connectToDB, isAuthenticated, collections.addToCollection);
 
+router.get('/getUserCollection', connectToDB, isAuthenticated, collections.getUserCollection);
+
 module.exports = router;

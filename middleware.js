@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const AppError = require('./errorHandling/AppError');
 const db_url = process.env.REGISTERLOGIN_DB_URL;
 
 module.exports.connectToDB = async (req, res, next) => {
