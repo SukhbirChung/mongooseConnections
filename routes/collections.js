@@ -8,4 +8,6 @@ router.post('/addToCollection', connectToDB, isAuthenticated, collections.addToC
 
 router.get('/getUserCollection', connectToDB, isAuthenticated, collections.getUserCollection);
 
+router.post('/removeFromCollection', connectToDB, isAuthenticated, collections.removeFromCollection);
+
 module.exports = router;
