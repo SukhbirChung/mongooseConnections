@@ -20,6 +20,7 @@ const sessionOptions = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        /*sameSite: "none",*/
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -27,14 +28,15 @@ const sessionOptions = {
 
 const corsOptions = {
     credentials: true,
-    origin: [process.env.CORS_ORIGIN_1]
+    origin: "http://localhost:3001"
 };
 
+//app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 app.use('/', userRoutes);
 app.use('/collection', collectionRoutes);

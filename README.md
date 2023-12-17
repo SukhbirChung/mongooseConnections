@@ -9,8 +9,12 @@ The main objective of this project is to allow users to provide their informatio
 * /login
 * /signup
 * /logout
+* /collection/addToCollection
+* /collection/getUserCollection
+* /collection/removeFromCollection
 
 ### Middlewares
 * connectToDB
 * registerUser
 * authenticateAndLogin
+* isAuthenticated
